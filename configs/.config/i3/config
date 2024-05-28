@@ -46,11 +46,16 @@ exec "xrdb -merge ~/.Xresources"
 default_border pixel 0
 default_floating_border pixel 0
 
-floating_minimum_size 300 x 250
-floating_maximum_size 800 x 600
+floating_minimum_size 1 x 1
+floating_maximum_size 1920 x 1080
 
 for_window [class=".*"] border pixel 0
 for_window [class="*"] floating enable 
+
+for_window [class="PacketTracer"] floating enable
+for_window [class="Viewnior"] floating enable
+for_window [class="Pavucontrol"] floating enable
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -182,7 +187,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'loginctl kill-user $USER'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
